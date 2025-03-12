@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import validator from "validator";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { SEVER_URL } from "@/utils/helper";
 
 const PaymentWithPaystack = ({ customerDetails }) => {
   const { totalCost, cartItems } = useSelector((state) => state.cart);
@@ -25,15 +26,12 @@ const PaymentWithPaystack = ({ customerDetails }) => {
     console.log("Items ordered", cartItems);
     console.log("customer details", customerDetails);
     try {
-      const response = await axios.post(
-        "http://localhost:3001/api/v1/order/create",
-        {
-          reference: reference,
-          totalCost: totalCost,
-          cartItems: cartItems,
-          customerDetails: customerDetails,
-        }
-      );
+      const response = await axios.post(`${SEVER_URL}/api/v1/order/create`, {
+        reference: reference,
+        totalCost: totalCost,
+        cartItems: cartItems,
+        customerDetails: customerDetails,
+      });
       console.log(response);
       alert("your order has beenplaced");
       router.push("/");
