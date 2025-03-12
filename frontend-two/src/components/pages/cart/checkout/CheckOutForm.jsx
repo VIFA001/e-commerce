@@ -2,7 +2,11 @@
 import { redirect } from "next/navigation";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import PaymentWithPaystack from "./PaymentWithPaystack";
+import dynamic from "next/dynamic";
+
+const PaystackDynamic = dynamic(() => import("./PaymentWithPaystack"), {
+  ssr: false,
+});
 const CheckOutForm = () => {
   const { totalCost } = useSelector((state) => state.cart);
   const [customerDetails, setCustomerDetails] = useState({
