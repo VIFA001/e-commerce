@@ -7,7 +7,7 @@ import { createNewOrder } from "./controllers/ordersControllers/creatOrder.js";
 import { CONNECT_DATABASE } from "./config/database.js";
 
 const app = express();
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
 app.use(cors());
 
