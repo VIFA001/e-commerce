@@ -16,6 +16,7 @@ export const cartSlice = createSlice({
       if (productAlreadyInCart !== undefined) {
         return;
       }
+      state.cartItems = [action.payload, ...state.cartItems];
 
       //calculate the total cost of all the the items in the cart
       let tempTotal = 0;
@@ -26,9 +27,6 @@ export const cartSlice = createSlice({
       state.totalCost = tempTotal;
 
       //caculating ends here
-
-      state.cartItems = [action.payload, ...state.cartItems];
-      console.log("User has added item", state.cartItems);
     },
 
     increaseProductQty: (state, action) => {

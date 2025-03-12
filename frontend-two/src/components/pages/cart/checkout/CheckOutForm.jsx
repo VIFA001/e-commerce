@@ -55,7 +55,7 @@ const CheckOutForm = () => {
         className="p-2 w-full border border-amber-500 rounded-md focus:outline focus:outline-amber-800"
       />
 
-      <PaymentWithPaystack customerDetails={customerDetails} />
+      <PaystackDynamic customerDetails={customerDetails} />
     </form>
   );
 };
